@@ -1,7 +1,7 @@
 package model;
 
 public class Machine {
-	
+
 	private Content pointed;
 
 	public Machine(Content pointed) {
@@ -17,12 +17,8 @@ public class Machine {
 	}
 
 	public void add(Content newContent) {
-		if (pointed != null) {
-			newContent.setNext(pointed);
-		}
+		newContent.setNext(pointed);
 		pointed = newContent;
 	}
-	
-	
-	
+
 }
