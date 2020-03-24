@@ -73,42 +73,29 @@ public class Controller {
 			}
 
 		} else {
+			c1.setPointed(newContent);
 			if (c == null) {
 				firstContent = newContent;
 			} else {
-				c1.setPointed(newContent);
 				firstContent.setNext(newContent);
 			}
 		}
 		verify();
 	}
 
-//	public void addOnMachineC2(Content newContent) {
-//		Content c = c2.getPointed();
-//		c2.add(newContent);
-//		if (c == null) {
-//			firstContent = newContent;
-//		}else {
-//			Content temp = firstContent;
-//			while (temp != null && temp != c) {
-//				temp = temp.getNext();
-//			}
-//			if (temp == c) {
-//				temp.setNext(newContent);
-//			}
-//		}
-//		Content temp = firstContent;
-//		verify();
-//	}
-//	public void addContent(Content newContent) {
-//		if (firstContent == null) {
-//			firstContent = newContent;			
-//		}else {
-//			Content temp = firstContent;			
-//			while (temp.getNext() != null) {
-//				temp = temp.getNext();
-//			}
-//			temp.setNext(newContent);
-//		}
-//	}
+	public void addOnMachineC2(Content newContent) {
+		Content c = c2.getPointed();
+		c2.setPointed(newContent);
+		if (c == null) {
+			firstContent = newContent;
+		} else {
+			Content temp = firstContent;
+			while (temp.getNext() != null) {
+				temp = temp.getNext();
+			}
+			temp.setNext(newContent);
+		}
+		verify();
+	}
+
 }
