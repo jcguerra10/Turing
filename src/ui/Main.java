@@ -19,23 +19,27 @@ public class Main {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(PATH));
 			BufferedWriter bw = new BufferedWriter(new FileWriter(OUTPUT));
-
-			String[] all = br.readLine().split("");
-			int p1 = 0;
-			int p2 = 0;
-			int p3 = 0;
-			int i = 0;
-			while (i < all.length ) {
-				p1 = i;
-				p2 = p1+1;
-				if (!all[p2].equals("1")) {
-					operation1(all[p1], all[p2]);
-					i = p2+1;
-				} else {
-					p3 = p2+1;
-					operation0(all[p1], all[p3]);
-					i = p3+1;
+			String line = br.readLine();
+			while (line != null) {
+				String[] all = line.split("");
+				int p1 = 0;
+				int p2 = 0;
+				int p3 = 0;
+				int i = 0;
+				while (i < all.length) {
+					p1 = i;
+					p2 = p1 + 1;
+					if (!all[p2].equals("1")) {
+						operation1(all[p1], all[p2]);
+						i = p2 + 1;
+					} else {
+						p3 = p2 + 1;
+						operation0(all[p1], all[p3]);
+						i = p3 + 1;
+					}
 				}
+				c.clear();
+				line = br.readLine();
 			}
 			br.close();
 			bw.close();
@@ -51,7 +55,7 @@ public class Main {
 		} else if (c1.equalsIgnoreCase("1")) {
 			if (ver == true && c.verifyForAdd() == true) {
 				c.addOnMachineC1second(new Content(c3 + ""));
-			}else {
+			} else {
 				c.addOnMachineC1(new Content(c3 + ""));
 			}
 			ver = false;

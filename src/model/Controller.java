@@ -182,4 +182,11 @@ public class Controller {
 		}
 		return b;
 	}
+	
+	public void clear() {
+		firstContent = null;
+		c0.setPointed(null);
+		c1.setPointed(null);
+		c2.setPointed(null);
+	}
 }
