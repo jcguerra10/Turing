@@ -10,7 +10,7 @@ import model.Controller;
 public class Main {
 
 	private static Controller c;
-	private static final String PATH = "data/incor.txt";
+	private static final String PATH = "data/in.txt";
 	private static final String OUTPUT = "data/output";
 	private static boolean ver = false;
 
@@ -19,6 +19,7 @@ public class Main {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(PATH));
 			BufferedWriter bw = new BufferedWriter(new FileWriter(OUTPUT));
+			System.out.println("#");
 			String line = br.readLine();
 			while (line != null) {
 				String[] all = line.split("");

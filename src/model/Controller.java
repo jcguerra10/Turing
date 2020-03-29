@@ -153,15 +153,30 @@ public class Controller {
 	}
 
 	public String readOnMachineC0() {
-		return c0.getPointed().getLetter();
+		Content c = c0.getPointed();
+		String m = "";
+		if (c != null) {
+			m = c.getLetter();
+		}		
+		return m;
 	}
 
 	public String readOnMachineC1() {
-		return c1.getPointed().getLetter();
+		Content c = c1.getPointed();
+		String m = "";
+		if (c != null) {
+			m = c.getLetter();
+		}		
+		return m;
 	}
 
 	public String readOnMachineC2() {
-		return c2.getPointed().getLetter();
+		Content c = c2.getPointed();
+		String m = "";
+		if (c != null) {
+			m = c.getLetter();
+		}		
+		return m;
 	}
 
 	public String show() {
