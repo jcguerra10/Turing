@@ -18,6 +18,9 @@ public class Machine {
 
 	public void add(Content newContent) {
 		newContent.setNext(pointed);
+		if (pointed != null) {
+			pointed.setPrev(newContent);
+		}
 		pointed = newContent;
 	}
 

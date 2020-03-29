@@ -8,7 +8,9 @@ public class Controller {
 	private Machine c2;
 
 	public Controller() {
-
+		c0 = new Machine(null);
+		c1 = new Machine(null);
+		c2 = new Machine(null);
 	}
 
 	public Content getFirstContent() {
@@ -68,8 +70,11 @@ public class Controller {
 				ant = temp;
 				temp = ant.getNext();
 			}
-			if (temp == c) {
-				ant.setNext(newContent);
+
+			if (ant != null) {
+				newContent.setPrev(ant);
+			}else {
+				firstContent = newContent;
 			}
 
 		} else {
@@ -78,8 +83,15 @@ public class Controller {
 				firstContent = newContent;
 			} else {
 				firstContent.setNext(newContent);
+				newContent.setPrev(firstContent);
 			}
 		}
+		verify();
+	}
+
+	public void addOnMachineC1second(Content newContent) {
+		c1.add(newContent);
+		firstContent = newContent;
 		verify();
 	}
 
@@ -89,13 +101,85 @@ public class Controller {
 		if (c == null) {
 			firstContent = newContent;
 		} else {
-			Content temp = firstContent;
-			while (temp.getNext() != null) {
-				temp = temp.getNext();
-			}
-			temp.setNext(newContent);
+			c.setNext(newContent);
+			newContent.setPrev(c);
 		}
 		verify();
 	}
 
+	public void removeOnMachineC0() {
+		Content temp = c0.getPointed();
+		if (temp != null) {
+			Content sig = temp.getNext();
+			if (sig != null) {
+				sig.setPrev(null);
+			}			
+			firstContent = sig;
+			c0.setPointed(sig);
+			verify();
+		}
+	}
+
+	public void removeOnMachineC1() {
+		Content point = c1.getPointed();
+		if (point != null) {
+			Content ant = point.getPrev();
+			Content sig = point.getNext();
+			if (ant == null) {
+				firstContent = null;
+			}else {
+				if (sig != null) {
+					ant.setNext(sig);
+					sig.setPrev(ant);
+				}
+			}					
+			c1.setPointed(null);
+			verify();
+		}
+	}
+
+	public void removeOnMachineC2() {
+		Content point = c2.getPointed();
+		if (point != null) {
+			Content ant = point.getPrev();
+			if (ant == null) {
+				firstContent = null;
+			}else {
+				c2.setPointed(ant);
+				ant.setNext(null);
+			}			
+			verify();
+		}
+	}
+
+	public String readOnMachineC0() {
+		return c0.getPointed().getLetter();
+	}
+
+	public String readOnMachineC1() {
+		return c1.getPointed().getLetter();
+	}
+
+	public String readOnMachineC2() {
+		return c2.getPointed().getLetter();
+	}
+
+	public String show() {
+		Content temp = firstContent;
+		String msg = "";
+		while (temp != null) {
+			msg += temp + "\n";
+			temp = temp.getNext();
+		}
+		return msg;
+	}
+
+	public boolean verifyForAdd() {
+		Content temp = firstContent;
+		boolean b = false;
+		if (temp != null && temp.getNext() == null) {
+			b = true;
+		}
+		return b;
+	}
 }

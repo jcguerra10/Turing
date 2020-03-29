@@ -3,6 +3,7 @@ package model;
 public class Content {
 	private String letter;
 	private Content next;
+	private Content prev;
 
 	public Content(String letter) {
 		super();
@@ -23,6 +24,19 @@ public class Content {
 
 	public void setNext(Content next) {
 		this.next = next;
+	}	
+
+	public Content getPrev() {
+		return prev;
 	}
+
+	public void setPrev(Content prev) {
+		this.prev = prev;
+	}
+
+	@Override
+	public String toString() {
+		return "[letter= " + letter + " ]";
+	}	
 	
 }
